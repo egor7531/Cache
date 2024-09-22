@@ -1,5 +1,5 @@
 from subprocess import run, Popen, PIPE
-from sys import executable
+from sys import executable, argv
 
 numTests = 10
 ok = True
@@ -19,7 +19,7 @@ for i in range(1, numTests + 1):
 		
 	inputFile = open(dataStr, "r")
 
-	result = run(["./src/cache", "cache"], capture_output = True, encoding = 'cp866', stdin = inputFile)
+	result = run(["./src/cache" , argv[1]], capture_output = True, encoding = 'cp866', stdin = inputFile)
 	print("Test: " + str(i).strip())
 
 	result = ''.join(''.join(c if c.isdigit() else ' ' for c in result.stdout).split())
@@ -30,6 +30,7 @@ for i in range(1, numTests + 1):
 		print("OK")
 	else:
 		print("ERROR\n", "correct: " + str(ans).strip(), "\n", "result: ", result)
+	print("-------------------------------------------------")
 	
 if ok:
 	print("TESTS PASSED")

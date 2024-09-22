@@ -9,7 +9,9 @@ namespace cache
     template <typename T, typename KeyT = int>
     class lru_cache_t
     {
-            size_t size;
+            size_t capacity;
+            int hits;
+
             std::list<std::pair<KeyT, T>> cache;
 
             using ListIt = typename std::list<std::pair<KeyT, T>>::iterator;
@@ -17,9 +19,11 @@ namespace cache
 
         public:
             
-            lru_cache_t(size_t sz): size(sz) {}
+            lru_cache_t(size_t cap): capacity(cap), hits{0} {}
             
-            bool full() const { return size == cache.size(); }
+            int get_hits() const { return hits; }
+            
+            bool full() const { return capacity == cache.size(); }
 
             template <typename F> 
             bool lookup_update(KeyT key, F slow_get_page)
@@ -41,8 +45,10 @@ namespace cache
 
                 auto eltit = hit->second;
                 if(eltit != cache.begin())
-                    cache.splice(cache.begin(), cache, eltit, std::next(eltit));
+                    cache.splice(cache.begin(), cache, eltit);//, std::next(eltit));
                 
+                hits++;
+
                 return true;
             }
     };

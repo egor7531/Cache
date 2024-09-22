@@ -11,6 +11,7 @@ namespace cache
     {   
             size_t capacity;
             size_t size;
+            int hits;
 
             struct freq_node_t;
             using FreqIterator = typename std::list<freq_node_t>::iterator;
@@ -34,9 +35,11 @@ namespace cache
             std::unordered_map<KeyT, ListIt> hash;
 
         public:
-            lfu_cache_t(size_t sz): size(sz) {}
+            lfu_cache_t(size_t cap): capacity(cap), size{0}, hits{0} {}
 
-            bool full() const { return size == cache.size(); }
+            int get_hits() const { return hits; }
+
+            bool full() const { return capacity == cache.size(); }
 
             template <typename F> 
             bool lookup_update(KeyT key, F slow_get_page)
@@ -58,6 +61,8 @@ namespace cache
 
                 add_new_hit(hit->second);
                 
+                hits++;
+
                 return true;
             }
 
