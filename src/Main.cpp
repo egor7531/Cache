@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "LRUcache.hpp"
+#include "LFUcache.hpp"
 
 int slow_get_page_int(int key) { return key; }
 
@@ -17,7 +18,7 @@ int main()
     std::cout << "Enter the number of elements: ";
     std::cin >> numElem;
 
-    lru_cache_t<int>cache{cacheSize};
+    cache::lfu_cache_t<int>cache{cacheSize};
   
     for (int i = 0; i < numElem; i++) 
     {
@@ -30,7 +31,7 @@ int main()
             hits += 1;
     }
     
-    std::cout << "Number of hits: " << hits << "\n";
+    std::cout << "Number of hits: " << hits << std::endl;
     
     return 0;
 }
