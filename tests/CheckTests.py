@@ -5,8 +5,8 @@ numTests = 10
 ok = True
 
 for i in range(1, numTests + 1):
-	dataStr = "testsFiles/test"
-	ansStr  = "testsFiles/testAns"
+	dataStr = "tests/testsFiles/test"
+	ansStr  = "tests/testsFiles/testAns"
 	if i % 10 != 0:
 		dataStr += "0"
 		ansStr += "0"	
@@ -19,7 +19,7 @@ for i in range(1, numTests + 1):
 		
 	inputFile = open(dataStr, "r")
 
-	result = run(["../src/lru", "lru"], capture_output = True, encoding = 'cp866', stdin = inputFile)
+	result = run(["./src/cache", "cache"], capture_output = True, encoding = 'cp866', stdin = inputFile)
 	print("Test: " + str(i).strip())
 
 	result = ''.join(''.join(c if c.isdigit() else ' ' for c in result.stdout).split())
@@ -29,7 +29,7 @@ for i in range(1, numTests + 1):
 	if result == ans:
 		print("OK")
 	else:
-		print("ERROR, correct: " + str(ans).strip())
+		print("ERROR\n", "correct: " + str(ans).strip(), "\n", "result: ", result)
 	
 if ok:
 	print("TESTS PASSED")
