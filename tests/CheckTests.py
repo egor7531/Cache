@@ -1,17 +1,16 @@
 from subprocess import run, Popen, PIPE
 from sys import executable, argv
 
-numTests = 10
+numTests = int(open("./tests/NumberTests.txt", 'r').read())
+
 ok = True
 
 for i in range(1, numTests + 1):
-	dataStr = "tests/testsFiles/test"
-	ansStr  = "tests/testsFiles/testAns"
-	if i % 10 != 0:
-		dataStr += "0"
-		ansStr += "0"	
-	dataStr += str(i) + ".txt"
-	ansStr  += str(i) + ".txt"
+	dataStr = "tests/testsFiles/"
+	ansStr  = "tests/testsFiles/Answer/" + 	argv[1].upper() + "/"
+
+	dataStr += f'{i :02}' + ".txt"
+	ansStr  += f'{i :02}' + ".txt"
 
 	outFile = open(ansStr, "r")
 	ans = outFile.read()
@@ -19,7 +18,7 @@ for i in range(1, numTests + 1):
 		
 	inputFile = open(dataStr, "r")
 
-	result = run(["./src/cache" , argv[1]], capture_output = True, encoding = 'cp866', stdin = inputFile)
+	result = run(["./build/src/cache" , argv[1]], capture_output = True, encoding = 'cp866', stdin = inputFile)
 	print("Test: " + str(i).strip())
 
 	result = ''.join(''.join(c if c.isdigit() else ' ' for c in result.stdout).split())

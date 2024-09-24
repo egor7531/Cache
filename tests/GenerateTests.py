@@ -1,9 +1,9 @@
 import random
 
-numTests = int(input("Enter the number of tests: " ))
+numTests = int(open("./tests/NumberTests.txt", 'r').read())
 
 for i in range(1, numTests + 1):
-    nameFile = "testsFiles/test" + f'{i :02}' + ".txt"
+    nameFile = "tests/testsFiles/" + f'{i :02}' + ".txt"
     file = open(nameFile, 'w')
 
     sizeCache = int(input("Enter the cache size: " ))
@@ -18,3 +18,4 @@ for i in range(1, numTests + 1):
     file.close()
 
     print("test: ", i, " generated")
+    print("-------------------------------------")
