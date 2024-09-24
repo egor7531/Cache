@@ -12,20 +12,20 @@ int get_hits(int argc, char* argv[], const size_t cacheSize, const int numElem);
 int main(int argc, char* argv[])
 {
     size_t cacheSize = 0;
-    int numElem   = 0;
+    int numElem  = 0;
     int hits = 0;
 
-    std::cout << "Enter cache size: ";
     std::cin >> cacheSize;
+    assert(std::cin.good());
 
-    std::cout << "Enter the number of elements: ";
     std::cin >> numElem;
+    assert(std::cin.good());
 
     hits = get_hits(argc, argv, cacheSize, numElem);
     if(hits < 0)
         return 1;
 
-    std::cout << "Number of hits: " << hits << std::endl;
+    std::cout << hits << std::endl;
     
     return 0;
 }
