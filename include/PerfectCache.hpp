@@ -30,7 +30,7 @@ namespace cache
 
             bool is_full() const { return capacity_ == cache_.size(); }
 
-            CacheIt get_deleting_elem()
+            void get_deleting_elem()
             {
                 size_t maxPosition = 0;
                 CacheIt erasingElem = {};
@@ -55,11 +55,11 @@ namespace cache
                     }
                 }
                 
-                return erasingElem;
+                dataSet_.erase(erasingElem->key);
+                cache_.erase(erasingElem);
             }
 
         public:
-
             perfect_cache_t(const size_t capacity, const std::vector<KeyT>& data): capacity_(capacity)
             {
                 size_t position = 0;
@@ -78,11 +78,7 @@ namespace cache
                 if (setHit == dataSet_.end())
                 {
                     if (is_full())
-                    {
-                        CacheIt erasingElem = get_deleting_elem();
-                        dataSet_.erase(erasingElem->key);
-                        cache_.erase(erasingElem);
-                    }
+                        get_deleting_elem();
 
                     dataSet_.insert(key);
                     cache_.push_back({slow_get_page(key), key});

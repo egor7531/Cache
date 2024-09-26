@@ -15,14 +15,14 @@ for i in range(1, numTests + 1):
 	outFile = open(ansStr, "r")
 	ans = outFile.read()
 	outFile.close()
-		
+
 	inputFile = open(dataStr, "r")
 
 	result = run(["./build/src/cache" , argv[1]], capture_output = True, encoding = 'cp866', stdin = inputFile)
 	print("Test: " + str(i).strip())
 
 	result = ''.join(''.join(c if c.isdigit() else ' ' for c in result.stdout).split())
-	
+
 	ok &= (result == ans)
 	
 	if result == ans:

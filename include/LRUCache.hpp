@@ -9,7 +9,7 @@ namespace cache
     template <typename T, typename KeyT = int>
     class lru_cache_t
     {
-            size_t capacity_ = 0;
+            const size_t capacity_ = 0;
             int hits_ = 0;
 
             std::list<std::pair<KeyT, T>> cache_;
@@ -17,13 +17,12 @@ namespace cache
             using ListIt = typename std::list<std::pair<KeyT, T>>::iterator;
             std::unordered_map<KeyT, ListIt> hash_;
 
+            bool is_full() const { return capacity_ == cache_.size(); }
+
         public:
-            
-            lru_cache_t(size_t capacity): capacity_(capacity) {}
+            lru_cache_t(const size_t capacity): capacity_(capacity) {}
             
             int get_hits() const { return hits_; }
-            
-            bool full() const { return capacity_ == cache_.size(); }
 
             template <typename F> 
             bool lookup_update(KeyT key, F slow_get_page)
@@ -32,7 +31,7 @@ namespace cache
 
                 if(hit == hash_.end())
                 {
-                    if(full())
+                    if(is_full())
                     {
                         hash_.erase(cache_.back().first);
                         cache_.pop_back();

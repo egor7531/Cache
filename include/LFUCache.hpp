@@ -9,7 +9,7 @@ namespace cache
     template <typename T, typename KeyT = int>
     class lfu_cache_t
     {   
-            size_t capacity_ = 0;
+            const size_t capacity_ = 0;
             size_t size_ = 0;
             int hits_ = 0;
 
@@ -70,11 +70,12 @@ namespace cache
                 iterator->freqIt_ = nextFreqIt;
             }
 
-        public:
-            lfu_cache_t(size_t capacity): capacity_(capacity) {}
-
             bool is_full() const { return capacity_ == size_; }
             bool is_empty() const { return size_ == 0; }
+
+        public:
+            lfu_cache_t(const size_t capacity): capacity_(capacity) {}
+
             int get_hits() const { return hits_; }
 
             template <typename F> 
