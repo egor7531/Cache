@@ -2,8 +2,8 @@
 #include <cstring>
 #include <iostream>
 
-#include "LRUcache.hpp"
-#include "LFUcache.hpp"
+#include "LRUCache.hpp"
+#include "LFUCache.hpp"
 
 int slow_get_page_int(int key);
 int choose_cache(int argc, char* argv[]);
