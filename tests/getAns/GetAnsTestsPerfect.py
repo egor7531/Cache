@@ -48,7 +48,7 @@ for i in range(1, numTests + 1):
                     cache.append(pages[0])
                 pages.pop(0)
 
-    nameFile = "tests/testsFiles/Answer/Perfect/" + f'{i :02}' + ".txt"
+    nameFile = "tests/testsFiles/Answer/PERFECT/" + f'{i :02}' + ".txt"
     file = open(nameFile, 'w')
     file.write(str(hits))
     file.close
