@@ -5,7 +5,12 @@ you can read about it [here](https://ieftimov.com/posts/when-why-least-frequentl
 As input, the user gives the cache size and the number of items that the cache will have to work with. At the output, the program outputs the number of hits.
 
 # Build
-
+```
+git clone git@github.com:egor7531/Cache.git
+```
+```
+cd Cache
+````
 ```
 cmake -S . -B build
 ```
