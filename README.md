@@ -8,6 +8,8 @@ As input, the user gives the cache size and the number of items that the cache w
 
 ```
 cmake -S . -B build
+```
+```
 cmake --build build
 ```
 # Run
@@ -21,7 +23,11 @@ cmake --build build
 
 ```
 ./tests/runTests/LRU.sh
+```
+```
 ./tests/runTests/LFU.sh
+```
+```
 ./tests/runTests/Perfect.sh
 ```
 
