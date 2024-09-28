@@ -30,7 +30,7 @@ namespace cache
 
             bool is_full() const { return capacity_ == cache_.size(); }
 
-            void get_deleting_elem()
+            void delete_elem()
             {
                 size_t maxPosition = 0;
                 CacheIt erasingElem = {};
@@ -77,8 +77,11 @@ namespace cache
 
                 if (setHit == dataSet_.end())
                 {
+                    if (hash_[key].size() == 1)
+                        return;
+                
                     if (is_full())
-                        get_deleting_elem();
+                        delete_elem();
 
                     dataSet_.insert(key);
                     cache_.push_back({slow_get_page(key), key});
