@@ -7,14 +7,8 @@ As input, the user gives the cache size and the number of items that the cache w
 # Build
 ```
 git clone git@github.com:egor7531/Cache.git
-```
-```
 cd Cache
-````
-```
 cmake -S . -B build
-```
-```
 cmake --build build
 ```
 # Run
