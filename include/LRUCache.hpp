@@ -53,3 +53,5 @@ namespace cache
             }
     };
 }
+
+void lru_cache();

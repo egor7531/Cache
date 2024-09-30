@@ -6,7 +6,6 @@
 #include <unordered_set>
 #include <vector>
 
-#include <iostream>
 
 namespace cache
 {
@@ -97,3 +96,6 @@ namespace cache
             }   
     };
 }
+
+
+void perfect_cache();

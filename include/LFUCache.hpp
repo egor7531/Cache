@@ -103,3 +103,5 @@ namespace cache
             }
     };
 }
+
+void lfu_cache();
