@@ -12,12 +12,15 @@ cmake -S . -B build
 cmake --build build
 ```
 # Run
-
 ```
-./build/src/cache [type of cache]
+./build/src/lru
 ```
-[type of cache] - lru, lfu, perfect (by default LRU)
-
+```
+./build/src/lfu
+```
+```
+./build/src/perfect 
+```
 # Run tests
 
 ```
