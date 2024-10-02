@@ -2,9 +2,10 @@
 #include <iostream>
 
 #include "LFUCache.hpp"
-#include "GetPage.hpp"
 
-void lfu_cache()
+int slow_get_page(int key) { return key; }
+
+int main()
 {
     size_t cacheSize = 0;
     int numElem  = 0;
@@ -24,4 +25,6 @@ void lfu_cache()
     }
 
     std::cout << cache.get_hits() << std::endl; 
+
+    return 0;
 }

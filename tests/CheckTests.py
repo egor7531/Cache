@@ -6,11 +6,8 @@ numTests = int(open("./tests/NumberTests.txt", 'r').read())
 ok = True
 
 for i in range(1, numTests + 1):
-	dataStr = "tests/testsFiles/"
-	ansStr  = "tests/testsFiles/Answer/" + 	argv[1].upper() + "/"
-
-	dataStr += f'{i :02}' + ".txt"
-	ansStr  += f'{i :02}' + ".txt"
+	dataStr = "tests/testsFiles/" + argv[1].upper() + "/" + f'{i :02}' + ".txt"
+	ansStr  = "tests/testsFiles/" + argv[1].upper() + "/" + f'{i :02}' + "Ans.txt"
 
 	outFile = open(ansStr, "r")
 	ans = outFile.read()
@@ -18,7 +15,7 @@ for i in range(1, numTests + 1):
 
 	inputFile = open(dataStr, "r")
 
-	result = run(["./build/src/cache" , argv[1]], capture_output = True, encoding = 'cp866', stdin = inputFile)
+	result = run("./build/src/" + argv[1], capture_output = True, encoding = 'cp866', stdin = inputFile)
 	print("Test: " + str(i).strip())
 
 	result = ''.join(''.join(c if c.isdigit() else ' ' for c in result.stdout).split())

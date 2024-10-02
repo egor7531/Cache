@@ -3,9 +3,10 @@
 #include <vector>
 
 #include "PerfectCache.hpp"
-#include "GetPage.hpp"
 
-void perfect_cache()
+int slow_get_page(int key) { return key; }
+
+int main()
 {
     size_t cacheSize = 0;
     int numElem  = 0;
@@ -29,4 +30,6 @@ void perfect_cache()
         cache.lookup_update(x, slow_get_page);
 
     std::cout << cache.get_hits() << std::endl; 
+
+    return 0;
 }

@@ -4,7 +4,7 @@ numTests = int(open("./tests/NumberTests.txt", 'r').read())
 
 for i in range(1, numTests + 1):
 
-    nameFile = "tests/testsFiles/" + f'{i :02}' + ".txt"
+    nameFile = "tests/testsFiles/LRU/" + f'{i :02}' + ".txt"
     hits = 0
     
     with open(nameFile, 'r') as file:
@@ -23,7 +23,7 @@ for i in range(1, numTests + 1):
 
             cache.insert(0, page) 
     
-    nameFile = "tests/testsFiles/Answer/LRU/" + f'{i :02}' + ".txt"
+    nameFile = "tests/testsFiles/LRU/" + f'{i :02}' + "Ans.txt"
     file = open(nameFile, 'w')
     file.write(str(hits))
     file.close

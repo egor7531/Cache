@@ -2,9 +2,10 @@
 #include <iostream>
 
 #include "LRUCache.hpp"
-#include "GetPage.hpp"
 
-void lru_cache()
+int slow_get_page(int key) { return key; }
+
+int main()
 {
     size_t cacheSize = 0;
     int numElem  = 0;
@@ -24,4 +25,6 @@ void lru_cache()
     }
 
     std::cout << cache.get_hits() << std::endl; 
+
+    return 0;
 }
