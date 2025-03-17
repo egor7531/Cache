@@ -1,4 +1,6 @@
-# Cache
+<h1 align="center">Cache</h1>
+
+# Description
 In this project, I am implementing my LRU, LFU and "perfect" caches. LFU is based on two lists: a cache list consisting of elements, each of which stores the number of hits and a list of elements with this number of hits (
 you can read more about it [here](https://arpitbhayani.me/blogs/lfu/) ). The perfect cache is based on the idea that we know the future and leave in the cache those elements that will soon meet again.
 
